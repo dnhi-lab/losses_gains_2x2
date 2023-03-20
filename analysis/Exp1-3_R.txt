@@ -1,0 +1,74 @@
+# Script to run linear mixed effects models in R
+library(lme4)
+setwd("C:/Users/kuper/Desktop/LT in PD/00_Losses_gains_2x2/Uploaded to Github/00Done_Data")
+
+# Load the data
+data <-  read.csv("data_Exp_1_2_3_cleaned.csv", header = FALSE)
+
+# Give each column a short name
+colnames(data) <- c(
+    "Experiment",
+    "Group",
+    "Player",
+    "Other",
+    "Trial_overall",
+    "Trial_block",
+    "Trial_POM",
+    "Block",
+    "Row_col",
+    "T",
+    "R",
+    "P",
+    "S",
+    "POM",
+    "Base_POM",
+    "a",
+    "b",
+    "Category",
+    "Loss_avoid",
+    "Pressed_button",
+    "Type_button",
+    "Response_time",
+    "Response",
+    "Response_other",
+    "Cooperate",
+    "Cooperate_other",
+    "Outcome",
+    "Player_points",
+    "Other_points",
+    "Previous_decision_self",
+    "Previous_decision_other"
+)
+
+# Define what type of variable each column is
+data$Experiment <- as.factor(data$Experiment)
+data$Group <- as.factor(data$Group)
+data$Player <- as.factor(data$Player)
+data$Other <- as.factor(data$Other)
+data$Row_col <- as.logical(data$Row_col)
+data$Base_POM <- as.factor(data$Base_POM)
+data$Category <- factor(data$Category, ordered = TRUE)
+data$Loss_avoid <- as.logical(data$Loss_avoid)
+data$Pressed_button <- as.logical(data$Pressed_button)
+data$Type_button <- as.factor(data$Type_button)
+data$Response <- as.factor(data$Response)
+data$Response_other <- as.factor(data$Response_other)
+data$Cooperate <- as.logical(data$Cooperate)
+data$Cooperate_other <- as.logical(data$Cooperate_other)
+data$Outcome <- as.factor(data$Outcome)
+data$Previous_decision_self <- as.logical(data$Previous_decision_self)
+data$Previous_decision_other <- as.logical(data$Previous_decision_other)
+
+# Check all is correct with str(data)
+
+# First model: only loss avoidance
+LMEM_1 <- glmer(Cooperate ~ Loss_avoid + (1|Player/Group/Experiment), data = data, family = binomial)
+summary(LMEM_1)
+
+# Add Category to estimate loss aversion with linaer fit
+LMEM_2 <- glmer(Cooperate ~ Loss_avoid + Category + (1|Player/Group/Experiment), data = data, family = binomial)
+summary(LMEM_2)
+
+# Add the previous decision of the other person
+LMEM_2 <- glmer(Cooperate ~ Loss_avoid + Category + Previous_decision_other + (1|Player/Group/Experiment), data = data, family = binomial)
+summary(LMEM_3)
