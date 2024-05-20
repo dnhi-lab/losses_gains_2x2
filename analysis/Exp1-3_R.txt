@@ -1,6 +1,6 @@
 # Script to run linear mixed effects models in R
 library(lme4)
-setwd("C:/Users/kuper/Desktop/LT in PD/00_Losses_gains_2x2/Uploaded to Github/00Done_Data")
+setwd("")
 
 # Load the data
 data <-  read.csv("data_Exp_1_2_3_cleaned.csv", header = FALSE)
