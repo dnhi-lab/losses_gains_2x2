@@ -8,7 +8,7 @@
 clear all
 clc
 
-cd('C:\Users\kuper\Desktop\LT in PD\00_Losses_gains_2x2\Uploaded to Github (finished)\Simulations')
+cd('')
 
 %% Define the game
 % base: define the largest, second largest, etc. payoffs irrespective of which game it is
