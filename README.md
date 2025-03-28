@@ -13,4 +13,6 @@ Data analysis
 
 To download a CSV file from Github: 1) click on CSV data in Github, 2) right click on ‘Raw’ button and 3) select ‘Save As’ (or check with any search engine if this doesn't work).
 
+A list of the variables names for each experiment can be found in the Matlab files of each experiment at losses_gains_2x2/analysis/Analysis_Exp_ and then the N of the experiment.
+
 If you have any questions, feel free to contact me (Benjamin Kuper-Smith) at bjks.science@gmail.com
