@@ -11,6 +11,8 @@ s.b_std = std(b)*100;
 % Run the t-test (within)
 [s.h, s.p, s.ci, s.stats] = ttest(a, b);
 
-s.CohensDRosenthal = s.stats.tstat/sqrt(length(a));
+s.CohensD = (s.a_mean - s.b_mean)/(sqrt((s.a_std^2+s.b_std^2)/2));
+
+%s.CohensDRosenthal = s.stats.tstat/sqrt(length(a));
 
 end
